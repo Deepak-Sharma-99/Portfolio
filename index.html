@@ -11,11 +11,58 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: #0d3adc;
+            color: #0015ff97;
             line-height: 1.6;
             scroll-behavior: smooth;
             position: relative;
-            overflow: hidden;
+            /* Enable scrolling */
+            overflow-y: auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* UI/UX Design Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0.05) 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0.05) 70%, transparent 70%);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Geometric shapes overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                polygon(0 0, 100% 0, 100% 30%, 0 50%),
+                polygon(0 70%, 100% 50%, 100% 100%, 0 100%);
+            background-color: transparent;
+            opacity: 0.1;
+            pointer-events: none;
         }
 
         /* Video background */
@@ -27,13 +74,18 @@
             height: 100%;
             z-index: -1;
             object-fit: cover;
+            /* Ensure video doesn't intercept input */
+            pointer-events: none;
         }
 
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background: linear-gradient(135deg, rgba(17, 185, 143, 0.95) 0%, rgba(98, 223, 135, 0.95) 100%);
+            color: rgb(10, 9, 9);
             padding: 40px 0;
             text-align: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
@@ -43,13 +95,15 @@
         }
 
         nav {
-            background-color: rgba(52, 73, 94, 0.8);
+            background: linear-gradient(135deg, rgba(213, 166, 166, 0.85) 0%, rgba(191, 106, 70, 0.85) 100%);
             text-align: center;
             padding: 15px;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         nav a {
-            color: white;
+            color: rgb(0, 0, 0);
             text-decoration: none;
             margin: 0 20px;
             font-size: 1.2em;
@@ -57,7 +111,86 @@
         }
 
         nav a:hover {
-            color: #1abc9c;
+            color: #1a8bbc;
+        }
+
+        /* Work Section */
+        #work {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .work-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            border-left: 5px solid #00f466;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .work-item h3 {
+            color: #00f466;
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .work-item .company {
+            color: #d7a368;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .work-item .duration {
+            color: #bf6a46;
+            font-style: italic;
+            margin: 5px 0;
+        }
+
+        .work-item .description {
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .work-item ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .work-item li {
+            margin: 8px 0;
+        }
+
+        .work-item.current {
+            border-left-color: #00f466;
+        }
+
+        .work-item.past {
+            border-left-color: #d7a368;
+        }
+
+        .current-badge {
+            display: inline-block;
+            background-color: #00f466;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-left: 10px;
         }
 
         /* Section Styles */
@@ -65,6 +198,11 @@
             padding: 50px 20px;
             max-width: 1200px;
             margin: auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .profile {
@@ -75,7 +213,7 @@
             border-radius: 50%;
             width: 150px;
             height: 150px;
-            border: 5px solid #1abc9c;
+            border: 5px solid #00f466;
         }
 
         .profile h2 {
@@ -85,14 +223,18 @@
 
         .profile p {
             font-size: 1.2em;
-            color: #7f8c8d;
+            color: #d7a368;
         }
 
         /* Contact Section */
         #contact {
-            background-color: rgba(236, 240, 241, 0.9);
+            background: linear-gradient(135deg, rgba(98, 223, 135, 0.85) 0%, rgba(17, 185, 143, 0.85) 100%);
             text-align: center;
             padding: 50px 20px;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         #contact h2 {
@@ -110,21 +252,23 @@
 
         .social-media a {
             margin: 0 10px;
-            color: #333;
+            color: #25515c;
             font-size: 2em;
             transition: color 0.3s;
         }
 
         .social-media a:hover {
-            color: #1abc9c;
+            color: #1c3c6e;
         }
 
         /* Footer */
         footer {
-            background-color: rgba(44, 62, 80, 0.8);
-            color: white;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.85) 0%, rgba(30, 50, 70, 0.85) 100%);
+            color: rgb(0, 0, 0);
             text-align: center;
             padding: 20px 0;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         footer p {
@@ -134,8 +278,8 @@
         /* Button */
         .btn {
             display: inline-block;
-            background-color: #1abc9c;
-            color: white;
+            background-color: #bf6a46;
+            color: rgb(0, 0, 0);
             padding: 10px 20px;
             font-size: 1.2em;
             border: none;
@@ -145,13 +289,18 @@
         }
 
         .btn:hover {
-            background-color: #16a085;
+            background-color: #c607fb;
         }
 
         /* Resume Section */
         .resume-section {
             margin-top: 20px;
             text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
     </style>
 
@@ -162,7 +311,7 @@
 
 <!-- Background video -->
 <video id="bg-video" autoplay muted loop>
-    <source src="856953-uhd_4096_2160_25fps.mp4" type="video/mp4">
+    <source src="Untitled design.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 
@@ -172,6 +321,7 @@
 
 <nav>
     <a href="#about">About</a>
+    <a href="#work">Work</a>
     <a href="#contact">Contact</a>
 </nav>
 
@@ -180,7 +330,6 @@
         <img src="WhatsApp Image 2024-10-14 at 01.24.01_3198552f.jpg" alt="Profile Picture">
         <h2>About Me</h2>
         <p>Proactive Computer Science Engineer skilled in Python, Java, HTML, and hardware troubleshooting. Seeking to leverage technical expertise in a challenging role.</p>
-        <a href="#contact" class="btn">This is My portfolio</a>
     </div>
 
     <!-- Resume Section -->
@@ -191,6 +340,48 @@
     </div>
 </section>
 
+<section id="work">
+    <h2 style="text-align: center; color: #00f466; font-size: 2.5em; margin-bottom: 30px;">Work Experience</h2>
+    
+    <!-- Current Work -->
+    <div class="work-item current">
+        <h3>Your Current Job Title <span class="current-badge">Current</span></h3>
+        <div class="company">Company Name</div>
+        <div class="duration">Start Date - Present</div>
+        <div class="description">
+            <p>Brief description of your current role and responsibilities.</p>
+            <ul>
+                <li>Key responsibility or achievement 1</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Past Work Experience -->
+    <div class="work-item past">
+        <h3>Previous Job Title</h3>
+        <div class="company">Previous Company Name</div>
+        <div class="duration">Start Date - End Date</div>
+        <div class="description">
+            <p>Brief description of your role and responsibilities at this position.</p>
+            <ul>
+                <li>Key responsibility or achievement 1</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="work-item past">
+        <h3>Another Previous Job Title</h3>
+        <div class="company">Another Company Name</div>
+        <div class="duration">Start Date - End Date</div>
+        <div class="description">
+            <p>Brief description of your role and responsibilities at this position.</p>
+            <ul>
+                <li>Key responsibility or achievement 1</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
 <section id="contact">
     <h2>Contact</h2>
     <p>If you'd like to get in touch with me, feel free to send an email to: <strong><a href="mailto:deepaksharmaiescollege@gmail.com">deepaksharmaiescollege@gmail.com</a></strong></p>
@@ -198,12 +389,12 @@
     <!-- Social Media Links -->
     <div class="social-media">
         <a href="https://www.facebook.com/profile.php?id=100008336025497" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/d_k_s_10/?fbclid=IwY2xjawF5BldleHRuA2FlbQIxMAABHdO9N9ITbs2dvtpXBdbezBzvKYwRFuBgCrEZwH_SB_omuGVvZ0VIpNrLcA_aem_MYGnPOrfAcBM1Q4heFS3IA" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/deepaksharma2488/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com/deepaks73799306/status/1536678667224375296?s=21&t=UCCNtD0-upEB3uzro6zDmw" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/_deep_09_10_?igsh=b3Y1Zzl5YXRnbzF2" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/deepak-sharma-71aa761ab/" target="_blank"><i class="fab fa-linkedin"></i></a>
+ 
         <a href="https://youtube.com/@deepakdhanbad?si=2lZZsZsIKpvoZMmB" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://wa.me/917461027063" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://github.com/your-github-username" target="https://github.com/Deepak-Sharma-99"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/Deepak-Sharma-99" target="https://github.com/Deepak-Sharma-99"><i class="fab fa-github"></i></a>
         <a href="mailto:deepaksharmaiescollege@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
     </div>
 </section>
